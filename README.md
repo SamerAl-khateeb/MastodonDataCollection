@@ -12,7 +12,7 @@ Need to Paste the key to the code so it can work
 Need to run this code everyday if you want to get trending hashtags everyday.
 
 ### Input and Output
-No input, the output will be a CSV file called **TrendingHashtagsOutputDateOfTheDay.csv** containing the top 20 daily trending hashtags on Mastodon.
+No input, the output will be a CSV file called **TrendingHashtagsOutput-DateOfTheDay.csv** containing the top 20 daily trending hashtags on Mastodon.
 
 
 ## getDataByHashtags.py
@@ -21,4 +21,4 @@ This script is used to collect data based on searched hashtag (or list of hashta
 ### Input and Output
 Input: a hashtag or a list of hashtags
 
-Output: the output will be a CSV file called **TrendingHashtagsOutputDateOfTheDay.csv** containing info collected for each hashtag
+Output: the output will be a CSV file called **TrendingHashtagsOutput-DateOfTheDay.csv** containing info collected about each hashtag
