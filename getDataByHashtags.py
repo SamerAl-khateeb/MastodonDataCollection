@@ -14,12 +14,13 @@ from mastodon import Mastodon
 import json
 import os
 import csv
+import re
 from datetime import datetime
 
 
 def write_output_to_CSV(biglist):
     # column names
-    columnNames = ["hashtagUsedToGetThisRow", "postID", "postLanguage", "postBookmarked", "postCreatedAt", "postEditedAt", "postFavourited", "postFavouritedCount", "postReblogsCount", "postRepliesCount", "postSensitive", "postVisibility", "postURL", "postURI", "accountEmail", "accountBot", "accountCreatedAt", "accountDiscoverable", "accountDisplayName", "accountFollowersCount", "accountFollowingCount", "accountGroup", "accountID", "accountLocked", "accountStatusesCount", "accountURL", "accountUsername", "attachedPostUrlAuthorName", "attachedPostUrlAuthorURL", "attachedPostUrlProviderName", "attachedPostUrlProviderUrl", "attachedPostUrlProviderTitle", "attachedPostUrlProviderType", "OtherHashtagsIncludedInPost"]
+    columnNames = ["hashtagUsedToGetThisRow", "postID", "postContent", "postLanguage", "postBookmarked", "postCreatedAt", "postEditedAt", "postFavourited", "postFavouritedCount", "postReblogsCount", "postRepliesCount", "postSensitive", "postVisibility", "postURL", "postURI", "accountEmail", "accountBot", "accountCreatedAt", "accountDiscoverable", "accountDisplayName", "accountFollowersCount", "accountFollowingCount", "accountGroup", "accountID", "accountLocked", "accountStatusesCount", "accountURL", "accountUsername", "attachedPostUrlAuthorName", "attachedPostUrlAuthorURL", "attachedPostUrlProviderName", "attachedPostUrlProviderUrl", "attachedPostUrlProviderTitle", "attachedPostUrlProviderType", "OtherHashtagsIncludedInPost"]
     
     # data rows of csv file
     rows = biglist
@@ -83,6 +84,11 @@ def process_response(jsonResponse, searchedHashTag):
 		localListForOtherPostHashtags = []
 
 		postID = jsonResponse[responseItem]['id']
+
+		postContentWithHTMLTags = jsonResponse[responseItem]['content']
+		# removing the html tags from the post content
+		postContent = re.sub(re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});'), ' ', postContentWithHTMLTags)
+
 		postLanguage = jsonResponse[responseItem]['language']
 		postBookmarked = jsonResponse[responseItem]['bookmarked']
 		postCreatedAt = str(jsonResponse[responseItem]['created_at'])
@@ -147,7 +153,7 @@ def process_response(jsonResponse, searchedHashTag):
 			localListForOtherPostHashtags.append([hashtagName,hashtagURL])
 
 		# creating a list of values (a row) 
-		CSVOutputRow = [hashtagUsedToGetThisRow, postID, postLanguage, postBookmarked, postCreatedAt, postEditedAt, postFavourited, postFavouritedCount, postReblogsCount, postRepliesCount, postSensitive, postVisibility, postURL, postURI, accountEmail, accountBot, accountCreatedAt, accountDiscoverable, accountDisplayName, accountFollowersCount, accountFollowingCount, accountGroup, accountID, accountLocked, accountStatusesCount, accountURL, accountUsername, attachedPostUrlAuthorName, attachedPostUrlAuthorURL, attachedPostUrlProviderName, attachedPostUrlProviderUrl, attachedPostUrlProviderTitle, attachedPostUrlProviderType, localListForOtherPostHashtags]
+		CSVOutputRow = [hashtagUsedToGetThisRow, postID, postContent, postLanguage, postBookmarked, postCreatedAt, postEditedAt, postFavourited, postFavouritedCount, postReblogsCount, postRepliesCount, postSensitive, postVisibility, postURL, postURI, accountEmail, accountBot, accountCreatedAt, accountDiscoverable, accountDisplayName, accountFollowersCount, accountFollowingCount, accountGroup, accountID, accountLocked, accountStatusesCount, accountURL, accountUsername, attachedPostUrlAuthorName, attachedPostUrlAuthorURL, attachedPostUrlProviderName, attachedPostUrlProviderUrl, attachedPostUrlProviderTitle, attachedPostUrlProviderType, localListForOtherPostHashtags]
 		# adding the row to the output list
 		CSVOutputList.append(CSVOutputRow)
 
