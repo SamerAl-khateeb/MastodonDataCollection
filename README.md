@@ -23,6 +23,6 @@ Input: a hashtag or a list of hashtags
 
 Output: the output will be a CSV file called **TrendingHashtagsOutput-DateOfTheDay.csv** containing info collected about each hashtag
 
-### Reference/Citation 
+## Reference/Citation 
 
 If you use any of the scripts provided or a modified version of them in your research, please cite the following article:
