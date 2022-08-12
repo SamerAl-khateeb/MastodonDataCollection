@@ -26,3 +26,5 @@ Output: the output will be a CSV file called **TrendingHashtagsOutput-DateOfTheD
 ## Reference/Citation 
 
 If you use any of the scripts provided or a modified version of them in your research, please cite the following article:
+
+Samer Al-khateeb. Dapping Into the Fediverse: Analyzing What's Trending on Mastodon Social. In: Thomson, R., Dancy, C., Pyke, A., (eds) Social, Cultural, and Behavioral Modeling. SBP-BRiMS 2022. Lecture Notes in Computer Science(),. Springer, Cham.
