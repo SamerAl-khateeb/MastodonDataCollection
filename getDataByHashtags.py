@@ -39,7 +39,7 @@ def write_output_to_CSV(biglist):
         fileIsEmpty = os.stat(filename).st_size == 0
 
         # creating a csv writer object
-        csvwriter = csv.writer(csv_output_file)
+        csvwriter = csv.writer(csv_output_file, lineterminator='\n')
 
         # if the file is empty (i.e., has size of 0) write the header or columnNames
         if fileIsEmpty:
