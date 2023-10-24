@@ -23,6 +23,16 @@ Input: a hashtag or a list of hashtags
 
 Output: the output will be a CSV file called **TrendingHashtagsOutput-DateOfTheDay.csv** containing info collected about each hashtag
 
+## hashtagsCoOccuranceNetworkGenerator.py
+This script is used to make a Hashtag X Hashtag network. Two hashtags will be connected if they are written in the same post.
+
+
+### Input and Output
+Input: a csv file with the data you collected by using the **getDataByHashtags.py**
+
+Output: the output will be a CSV file called **Hashtags-CoOccurance-Network.csv**
+
+
 ## Reference/Citation 
 
 If you use any of the scripts provided or a modified version of them in your research, please cite the following article:
