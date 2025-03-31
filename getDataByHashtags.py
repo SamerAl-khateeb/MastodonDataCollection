@@ -162,7 +162,7 @@ def main():
     api_base_url = 'https://mastodon.social'
 	)
 
-	listOfKeywords = ['PasteYourHartagsHere1', 'PasteYourHartagsHere2']
+	listOfKeywords = ['PasteYourHashtag1Here', 'PasteYourHashtag2Here']
 	
 	# list to hold each reponse list we get from each hashtag
 	listOfResponses = []
