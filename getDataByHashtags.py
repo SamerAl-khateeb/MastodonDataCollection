@@ -1,7 +1,20 @@
-# getDataByHashtags.py                By: Samer Al-khateeb
-# script used to collect data based on searched hashtag (or list of hashtags)
-# Make sure Mastodon.py file is in the same folder as this code
-
+# getDataByHashtags.py      By: Samer Al-khateeb
+'''
+script used to collect data based on searched hashtag 
+(or list of hashtags). Make sure Mastodon.py is installed 
+by typing this in VSCode:
+	- Mac users' type:
+      	python3 -m pip install Mastodon.py
+	- Windows users' type:
+  		py -m pip install Mastodon.py
+	
+	OR
+	Open terminal or cmd:
+	- Mac users type:
+      	python3 -m pip install Mastodon.py -–user
+	- Windows users type:
+  		py -m pip install Mastodon.py -–user
+'''
 
 from mastodon import Mastodon
 import json
