@@ -1,13 +1,6 @@
-# getDataByHashtags.py                                  By: Samer Al-khateeb
+# getDataByHashtags.py                By: Samer Al-khateeb
 # script used to collect data based on searched hashtag (or list of hashtags)
-
-# Make sure Mastodon.py installed correctly
-# To install Mastodon.py follow these steps:
-# Open terminal or cmd:
-# Mac users type:
-#    python3 -m pip install Mastodon.py -–user
-# Windows users type:
-#    py -m pip install Mastodon.py -–user
+# Make sure Mastodon.py file is in the same folder as this code
 
 
 from mastodon import Mastodon
@@ -34,12 +27,12 @@ def write_output_to_CSV(biglist):
     filename = "output{}.csv".format(dt_string)
 
     # opening the csv file in append mode
-    with open(filename, 'a', encoding='utf-8') as csv_output_file:
+    with open(filename, 'a', encoding='utf-8') as csvOutputFile:
         # define a variable to check if the file is empty (of size zero)
         fileIsEmpty = os.stat(filename).st_size == 0
 
         # creating a csv writer object
-        csvwriter = csv.writer(csv_output_file, lineterminator='\n')
+        csvwriter = csv.writer(csvOutputFile)
 
         # if the file is empty (i.e., has size of 0) write the header or columnNames
         if fileIsEmpty:
@@ -88,6 +81,7 @@ def process_response(jsonResponse, searchedHashTag):
 		postContentWithHTMLTags = jsonResponse[responseItem]['content']
 		# removing the html tags from the post content
 		postContent = re.sub(re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});'), ' ', postContentWithHTMLTags)
+
 
 		postLanguage = jsonResponse[responseItem]['language']
 		postBookmarked = jsonResponse[responseItem]['bookmarked']
@@ -164,11 +158,11 @@ def process_response(jsonResponse, searchedHashTag):
 def main():
 	mastodonInstance = Mastodon(
 	# create an app to get the access token code
-    access_token = 'PasteYourAccessTokenKeyHere!',
+    access_token = 'PasteYourAccessTokenHere!',
     api_base_url = 'https://mastodon.social'
 	)
 
-	listOfKeywords = ['PasteYourHastagOneHereWithoutPoundSign', 'PasteYourHastagTwoHereWithoutPoundSign']
+	listOfKeywords = ['PasteYourHartagsHere1', 'PasteYourHartagsHere2']
 	
 	# list to hold each reponse list we get from each hashtag
 	listOfResponses = []
