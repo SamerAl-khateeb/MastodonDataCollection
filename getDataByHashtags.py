@@ -40,7 +40,7 @@ def write_output_to_CSV(biglist):
     filename = "output{}.csv".format(dt_string)
 
     # opening the csv file in append mode
-    with open(filename, 'a', encoding='utf-8') as csvOutputFile:
+    with open(filename, 'a', encoding='utf-8', newline='') as csvOutputFile:
         # define a variable to check if the file is empty (of size zero)
         fileIsEmpty = os.stat(filename).st_size == 0
 
